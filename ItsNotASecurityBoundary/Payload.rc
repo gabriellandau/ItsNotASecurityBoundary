@@ -1,0 +1,3 @@
+#include "resource.h"
+
+RES_PAYLOAD RCDATA "..\\oem15.cat"

@@ -8,17 +8,19 @@ Presented at [BlueHat IL 2024](https://x.com/BlueHatIL/status/179262602623045654
 
 This repository demonstrates a long-standing class of vulnerabilities which I'm calling **False File Immutability** (FFI).  FFI occurs when code assumes that files cannot be modified because they were opened without `FILE_SHARE_WRITE`.  In some situations, it's possible for attackers to modify files even when write sharing is denied.  When this occurs, any code that reads the same value/offset within a file more than once may be subject to double-read vulnerabilities.  FFI can occur with both traditional I/O (e.g. `ReadFile`) or memory-mapped I/O (e.g. `MapViewOfFile`), and can affect both user- and kernel-mode code.
 
-For more information on False File Immutability, see my talks and slides (once posted).
+For more information on False File Immutability, see my [slides](/Slides) and talks (once posted).
 
 ## It's Not A Security Boundary
 
 ItsNotASecurityBoundary is an exploit that leverages False File Immutability assumptions in Windows Code Integrity (`ci.dll`) to trick it into accepting an improperly-signed security catalog containing fraudulent authentihashes.  With attacker-controlled authentihashes loaded and trusted by CI, the kernel will load any driver of the attacker's choosing, even unsigned ones.
 
+https://github.com/gabriellandau/ItsNotASecurityBoundary/assets/42078554/753ede06-08c8-4204-a734-a5f583c6424a
+
 To exploit this bug in CI, an attacker first plants a security catalog on an attacker-controlled storage device, which CI then loads and parses.  As CI is processing the catalog, the attacker rapidly injects a malicious [authentihash](https://virustotal.readme.io/reference/authentihash) between CI's signature validation and catalog parsing phases.  Further, the attacker must force the memory-mapped catalog pages to be discarded in this tight window.  Because of this tight race, it's a non-deterministic exploit.  You may have to run it 5+ times in order for it to succeed.
 
 ItsNotASecurityBoundary's name is an homage to MSRC's policy that "[Administrator-to-kernel is not a security boundary.](https://www.microsoft.com/en-us/msrc/windows-security-servicing-criteria)"
 
-For more details on the ItsNotASecurityBoundary exploit, see my talks and slides (once posted).
+For more details on the ItsNotASecurityBoundary exploit, see my [slides](/Slides) and talks (once posted).
 
 Here is a diagram from the slides outlining the attack:
 

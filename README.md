@@ -2,13 +2,13 @@
 
 By [Gabriel Landau](https://twitter.com/GabrielLandau) at [Elastic Security](https://www.elastic.co/security-labs/).
 
-Presented at [BlueHat IL 2024](https://x.com/BlueHatIL/status/1792626026230456546) ([abstract](https://www.microsoftrnd.co.il/bluehatil/conference/abstracts#collapse-12)) and REcon Montreal 2024 ([abstract](https://cfp.recon.cx/recon2024/talk/337QFH/)).
+Presented at [BlueHat IL 2024](https://x.com/BlueHatIL/status/1792626026230456546) ([abstract](https://x.com/GabrielLandau/status/1782400617836875956), [slides](Slides/BlueHatIL%202024%20-%20Smoke%20and%20Mirrors%20-%20Driver%20Signatures%20Are%20Optional.pdf), [recording](https://www.youtube.com/watch?v=1LvOFU1u-eo)) and REcon Montreal 2024 ([abstract](https://cfp.recon.cx/recon2024/talk/337QFH/), [slides](Slides/REcon%20Montreal%202024%20Smoke%20and%20Mirrors%20-%20Driver%20Signatures%20Are%20Optional.pdf)).
 
 ## False File Immutability
 
 This repository demonstrates a long-standing class of vulnerabilities which I'm calling **False File Immutability** (FFI).  FFI occurs when code assumes that files cannot be modified because they were opened without `FILE_SHARE_WRITE`.  In some situations, it's possible for attackers to modify files even when write sharing is denied.  When this occurs, any code that reads the same value/offset within a file more than once may be subject to double-read vulnerabilities.  FFI can occur with both traditional I/O (e.g. `ReadFile`) or memory-mapped I/O (e.g. `MapViewOfFile`), and can affect both user- and kernel-mode code.
 
-For more information on False File Immutability, see my [slides](/Slides) and talks (once posted).
+For more information on False File Immutability, see my [slides](/Slides) and talks.
 
 ## It's Not A Security Boundary
 
@@ -20,7 +20,7 @@ To exploit this bug in CI, an attacker first plants a security catalog on an att
 
 ItsNotASecurityBoundary's name is an homage to MSRC's policy that "[Administrator-to-kernel is not a security boundary.](https://www.microsoft.com/en-us/msrc/windows-security-servicing-criteria)"
 
-For more details on the ItsNotASecurityBoundary exploit, see my [slides](/Slides) and talks (once posted).
+For more details on the ItsNotASecurityBoundary exploit, see my [slides](/Slides) and talks.
 
 Here is a diagram from the slides outlining the attack:
 

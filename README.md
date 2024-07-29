@@ -28,7 +28,7 @@ Here is a diagram from the slides outlining the attack:
 
 ## Fine, But We Can Still Easily Stop It
 
-FineButWeCanStillEasilyStopIt is a kernel driver that demonstrates how to detect and stop the ItsNotASecurityBoundary exploit.  Because a third-party kernel driver cannot safely modify the internal workings of Code Integrity, it must use a someone-complicated process to identify and block the exploit while minimizing false positives that can interrupt benign system behavior.  A proper fix within CI itself would be much simpler.
+FineButWeCanStillEasilyStopIt is a kernel driver that demonstrates how to detect and stop the ItsNotASecurityBoundary exploit.  Because a third-party kernel driver cannot safely modify the internal workings of Code Integrity, it must use a somewhat-complicated process to identify and block the exploit while minimizing false positives that can interrupt benign system behavior.  A proper fix within CI itself would be much simpler.
 
 ### Disclosure Timeline and Fix
 
